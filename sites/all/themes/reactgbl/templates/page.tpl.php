@@ -247,9 +247,6 @@
 
 <!--</div></div> <!-- /#page, /#page-wrapper -->
 
-
-<!--main content layout starts here-->
-
 <!--header-->
 <header class="pg-header">
 	<div class="upper_header">
@@ -728,11 +725,3 @@
 		</div>
 </footer>
 <!-- Footer end -->
-
-
-
-
-
-
-
-
