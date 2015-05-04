@@ -121,6 +121,7 @@ function reactgbl_preprocess_block(&$variables) {
   // In the header region visually hide block titles.
   if ($variables['block']->region == 'header') {
     $variables['title_attributes_array']['class'][] = 'element-invisible';
+	$variables['logo'] = 'test';
   }
 }
 
@@ -128,7 +129,14 @@ function reactgbl_preprocess_block(&$variables) {
  * Implements theme_menu_tree().
  */
 function reactgbl_menu_tree($variables) {
-  return '<ul class="menu clearfix">' . $variables['tree'] . '</ul>';
+ 	
+  if($variables['theme_hook_original'] == 'menu_tree__user_menu'){	
+		return $variables['tree']; 	
+  }else if($variables['theme_hook_original'] == 'menu_tree__main_menu'){
+		return '<ul class="nav navbar-nav">' . $variables['tree'] . '</ul>';
+  }else{
+		return '<ul class="menu clearfix">' . $variables['tree'] . '</ul>';
+  }
 }
 
 /**
@@ -154,3 +162,106 @@ function reactgbl_field__taxonomy_term_reference($variables) {
 
   return $output;
 }
+/**
+ * Implements template_preprocess_region().
+ */
+function reactgbl_preprocess_region(&$variables) {
+	global $base_url;
+	if($variables['elements']['#region']){
+		$variables['logo'] = theme_get_setting('logo');
+		$variables['front_page'] = $base_url;
+	}
+}
+/**
+ * Implements main_menu().
+ */
+
+function reactgbl_menu_link__main_menu(array $variables) {
+	  global $user;
+	  global $base_url;
+	  $element = $variables['element'];
+	  $title = $element['#title'];
+	  $attr = drupal_attributes($element['#attributes']);
+	  $output ='';
+	  $custom_class = '';
+	  $output .= '<li ' . $attr . '>';
+			$output .= '<a href="'.$element['#href'].'">'.$title.'</a>';
+	  $output . '</li>';
+	  
+	  return $output;
+}
+/**
+ * Implements user_menu().
+ */
+function reactgbl_menu_link__user_menu(array $variables) {
+	  global $user;
+	  global $base_url;
+	  $element = $variables['element'];
+	  $title = $element['#title'];
+	  $output ='';
+	  $custom_class = '';
+	 
+	  
+	  if($user->uid){
+	  $output .= '<div class="col-sm-4 col-xs-4">';
+	  $output .= '<div class="sign_in">';
+	  $output .= '<div class="btn-group dropdown">';
+			//$output .= l($title, $element['#href'], array('attributes' => array('class' => array('btn', 'btn-default'))));
+		    $output .= '<a href="'.$element['#href'].'" type="button" class="btn btn-default">';
+					switch($title){
+						case '':
+							break;
+						case 'Wishlist':
+								$custom_class .= 'fa-gift';
+							break;
+						case 'Log out':
+								$custom_class .= 'fa-lock';
+							break;	
+						default :
+							$custom_class .= 'fa-user';	
+					}
+					$output .= '<i class="fa '.$custom_class.'"></i>';
+					$output .= '<span>'.$title.'</span>';
+			$output .= '</a>';
+	 $output .= '</div>';
+	 $output .= '</div>';
+	 $output .= '</div>';	
+	  }else{
+			$output .= '<div class="col-sm-4 col-xs-4">';
+		    $output .= '<div class="sign_in">';
+		    $output .= '<div class="btn-group dropdown">';
+			$output .= '<a href="'.$base_url.'/user/" type="button" class="btn btn-default">';
+			$output .= 		'<i class="fa fa-user"></i>';
+			$output .= 		'<span>Sign In</span>';
+			$output .= '</a>';
+			$output .= '</div>';
+		    $output .= '</div>';
+		    $output .= '</div>';
+			
+			$output .= '<div class="col-sm-4 col-xs-4">';
+		    $output .= '<div class="sign_in">';
+		    $output .= '<div class="btn-group dropdown">';
+			$output .= '<a href="'.$base_url.'/user/register" type="button" class="btn btn-default">';
+			$output .= 		'<i class="fa fa-lock"></i>';
+			$output .= 		'<span>Register</span>';
+			$output .= '</a>';
+			$output .= '</div>';
+		    $output .= '</div>';
+		    $output .= '</div>';
+			
+			$output .= '<div class="col-sm-4 col-xs-4">';
+		    $output .= '<div class="sign_in">';
+		    $output .= '<div class="btn-group dropdown">';
+			$output .= '<a href="javascript:void(0);" type="button" class="btn btn-default">';
+			$output .= 		'<i class="fa fa-gift"></i>';
+			$output .= 		'<span>Wishlist</span>';
+			$output .= '</a>';
+			$output .= '</div>';
+		    $output .= '</div>';
+		    $output .= '</div>';
+	  }
+	 
+	  return $output;
+	  
+}
+
