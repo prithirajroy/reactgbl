@@ -12,7 +12,11 @@
     	<div class="container">
         	<div class="row"><!-- logopart -->
         		<div class="col-sm-3 col-xs-3 logo-part">
-        			<img src="<?php print $directory;?>/images/logo.png" class="img-responsive rsp_image">
+        		<?php if ($logo): ?>
+				<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+						<img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="img-responsive rsp_image"/>
+				</a>
+				<?php endif; ?>
         		</div>
         		<!--end of logopart -->
         		<!-- logo-right-part -->
@@ -20,36 +24,10 @@
         			 <div class="row top-nav-signup-part"><!-- top nav part -->        			 	 
         			 	<div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-4"><!-- sign in part -->
         			 		<div class="row sign-up-part">
-        			 			<div class="col-sm-4 col-xs-4">
-        			 				<div class="sign_in">        			 					
-        			 					<div class="btn-group dropdown">
-        			 						 <a href="#" type="button" class="btn btn-default"> <i class="fa fa-user"></i><span>Sign In</span></a>
-											  <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-											    <span class="caret"></span>
-											    <span class="sr-only">Toggle Dropdown</span>
-											  </button>        			 						
-											  <ul class="dropdown-menu" role="menu">
-											 fgjfjghj
-											  </ul> -->
-        			 						</div>										
-									</div> 
-        			 			</div>
-        			 			<div class="col-sm-4 col-xs-4">
-        			 				<div class="sign_in">
-										<a class="btn btn-default" href="#">									
-											<i class="fa fa-lock"></i>
-											<span>Register</span>								
-										</a>
-									</div>  
-        			 			</div>
-        			 			<div class="col-sm-4 col-xs-4">
-        			 				<div class="sign_in">
-										<a class="btn btn-default" href="#">									
-											<i class="fa fa-gift"></i>
-											<span>Wish-list</span>							
-										</a>
-									</div> 
-        			 			</div>
+        			 		<?php 
+								$tree = menu_tree_output(menu_tree_all_data('user-menu'));
+								print drupal_render($tree);
+							?>
         			 		</div>     									 		
         			 	</div><!--end of sign in part -->        			 
         			 </div>        			 
@@ -491,23 +469,22 @@
                             </button>                    
                         </div>
         				<div class="collapse navbar-collapse  navigation-part" id="top_nav">
-                        	<ul class="nav navbar-nav">  <!-- nav-justified -->
-                                <li class="active"><a href="#" title="">Home</a></li>
-                                <li><a href="#" title="">About us</a></li> 
-                                <li><a href="#" title="">Profiles</a></li>  	                               
-                                <li><a href="#" title="">Links1</a></li>
-                                <li><a href="#" title="">Portfolio</a></li>
-                                <li><a href="#" title="">contact us</a></li>
-                                 <!-- <li class="dropdown">  
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inmate initiatives<span class="caret"></span></a>  
-                                    <ul class="dropdown-menu"> 
-                                        <li><a href="#" title="fall back">fall back</a></li> 
-                                        <li><a href="#" title="men s.t.o.p">men S.t.o.p</a></li>
-                                        <li><a href="#" title="the mentoring project">the mentoring Project</a></li>
-                                        <li class="last"><a href="#" title="letter to the streets">letter to the streets</a></li>  
-                                    </ul>  
-                                </li> -->
-                         	</ul>
+                        	<?php if ($main_menu): ?>
+							  <div id="main-menu" class="navigation">
+								<?php print theme('links__system_main_menu', array(
+								  'links' => $main_menu,
+								  'attributes' => array(
+									'id' => 'main-menu-links',
+									'class' => array('nav', 'navbar-nav'),
+								  ),
+								  'heading' => array(
+									'text' => t('Main menu'),
+									'level' => 'h2',
+									'class' => array('element-invisible'),
+								  ),
+								)); ?>
+								</div> <!-- /#main-menu -->
+							<?php endif; ?> 		
                			 </div>  
             		</div>
             		
