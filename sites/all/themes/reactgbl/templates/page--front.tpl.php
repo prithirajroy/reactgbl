@@ -21,17 +21,7 @@
         		<!--end of logopart -->
         		<!-- logo-right-part -->
         		<div class="col-sm-9 col-xs-9">
-        			 <div class="row top-nav-signup-part"><!-- top nav part -->
-        			 	<div class="col-md-5 col-sm-12 col-xs-12">
-        			 		<div class="navbar-collapse top-nav-upper"> <!-- id="top_nav" -->
-	                        	<ul class="nav navbar-nav"><!-- nav-justified -->
-	                                <li class="active"><a href="#">Home</a></li>
-	                                <li><a href="#" title="">About</a></li> 
-	                                <li><a href="#" title="">Profiles</a></li>  	                                
-	                                <li><a href="#" title="">Book Club</a></li>
-	                         	</ul>
-                   			 </div>                  
-        			 	</div><!-- top nav part -->   
+        			 <div class="row top-nav-signup-part">   
         			 	<div class="col-md-4 col-sm-6 col-xs-5"><!-- sign in part -->
         			 		<div class="row sign-up-part">
 							<?php 
@@ -41,7 +31,7 @@
 							</div>  									 		
         			 	</div><!--end of sign in part -->
         			 	<div class="col-md-3 col-sm-6 col-xs-7"><!-- language currency part -->
-        			 		<div class="row select-part">
+        			 		<!--<div class="row select-part">
         			 			<div class="col-sm-6 col-xs-6">
         			 				<select class="select-box">	
         			 					<option>-language-</option>	        			 			
@@ -53,11 +43,11 @@
         			 				<select class="select-box">
 		        			 			<option>-currency-</option>
 		        			 			<option>Doller</option><!-- <i class="fa fa-dollar"></i> -->
-		        			 			<option>Eur</option><!-- <i class="fa fa-eur"></i> -->
-		        			 			<option>gbp</option><!-- <i class="fa fa-gbp"></i> -->
-		        			 		</select>
+		        			 			<!--<option>Eur</option><!-- <i class="fa fa-eur"></i> -->
+		        			 			<!--<option>gbp</option><!-- <i class="fa fa-gbp"></i> -->
+		        			 		<!--</select>
         			 			</div>
-        			 		</div>
+        			 		</div>-->
         			 	</div><!-- ebnd of language currency part -->
         			 </div>        			 
         			 <div class="row serarch-part-outer"><!-- serch- cart part -->

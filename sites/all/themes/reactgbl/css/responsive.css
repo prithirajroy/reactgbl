@@ -1,5 +1,30 @@
+@media only screen and (max-width:1199px){
+	.mega-drop-down{
+		left: 226px;width: 714px;
+	}
+	.shop-list li a{
+		padding: 4px 10px;
+	}
+	.addto-cart{
+		padding: 5px 10px;font-size: 14px;
+	}
+	.product-box{
+		padding: 14px;
+	}
+	.like-cart{
+		padding: 5px 7px; font-size: 14px;
+	}
+	.wish-cart{
+		padding: 4px 7px;  font-size: 16px;	
+	}
+	.shop-list li dt:after{
+		bottom: 9px;
+	}
+}
 
-@media only screen and (min-width: 768px) and (max-width: 1023px){
+
+
+@media only screen and (max-width: 1023px){
 	.nav_cust_style .navbar-nav > li > a{
 		 padding: 8px 5px 9px 6px;
 		 font-size: 14px;
@@ -14,7 +39,7 @@
 	    width: 100%;
 	}
 	.addto-cart{
-		width: 75%;
+		width: 66%;
 	}
 	.product-big-box h3{
 		font-size: 17px;
@@ -29,7 +54,27 @@
 		 font-size: 12px;
     	padding: 2px 8px;
 	}
+	.shop-list li dt:after{
+		bottom: 6px;
+	}
 }
+
+
+@media only screen and (max-width: 992px){
+	.addto-cart{
+		width: 79%;
+	}
+.footer .text-right{
+	text-align: center;
+}
+.mega-drop-down{
+	  left: 171px;
+	  width: 548px;
+}
+}
+
+
+
 
 @media only screen and (min-width: 601px) and (max-width: 767px){
 	.nav_cust_style .nav-justified > li > a{
@@ -215,7 +260,17 @@
 	.slider-part{
 		margin-top:6px;
 	}
-
+	#left-nav{
+		background: #fff;
+		z-index: 11;
+	}
+	.shop-list li a{
+		padding: 4px 7px;
+	}
+	.mega-drop-down {
+	    left: 171px;
+	    width: 64%;
+	}
 }
 
 
@@ -264,9 +319,6 @@
 		font-size: 13px;
 	}
 	
-	.serarch-part-outer {
-	    margin-bottom: 0;
-	}
 	.pasta-box{
 		margin-bottom: 10px;
 	}
@@ -320,6 +372,9 @@
 		float: none;
 		display: inline-block;
 	}
+	.serarch-part-outer{
+		margin-bottom: 10px;
+	}
 }
 
 @media only screen and (max-width:495px){
@@ -368,5 +423,33 @@
 	}
 	.logo-part img {
 	    width: 90px;
+	}
+	.mega-drop-down{
+		position: static;
+		width: 100%;
+		text-align: center;
+	}
+	.shop-list li a {
+	    font-size: 13px;
+	    padding: 5px 7px;
+	}
+	.cart-box .btn {
+	    padding: 6px;
+	}
+	.cart-box i {
+	    font-size: 16px;
+	    margin-right: 5px;
+	}
+	.toggle-header {
+	    margin-bottom: 10px;
+	}
+	.shop-list li dt:after{
+		display: none;
+	}
+	.slider-part .carousel-caption{
+		display: none;
+	}
+	.transuctiona{
+		margin-top: 8px;
 	}
 }
