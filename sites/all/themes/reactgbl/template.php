@@ -168,8 +168,14 @@ function reactgbl_field__taxonomy_term_reference($variables) {
 function reactgbl_preprocess_region(&$variables) {
 	global $base_url;
 	if($variables['elements']['#region']){
-		$variables['logo'] = theme_get_setting('logo');
-		$variables['front_page'] = $base_url;
+	    if($variables['elements']['#region'] == 'header'){
+			$variables['logo'] = theme_get_setting('logo');
+			$variables['front_page'] = $base_url;
+			$variables['search_bar']  = $variables['elements']['search_form'];
+			//$variables['main_menu'] = $variables['elements']['system_main-menu'];
+			//$variables['user_menu'] = $variables['elements']['system_user-menu'];
+		}
+		
 	}
 }
 /**
@@ -263,5 +269,13 @@ function reactgbl_menu_link__user_menu(array $variables) {
 	 
 	  return $output;
 	  
+}
+/**
+ * Implements sidebar_menu().
+ */
+function reactgbl_menu_link__menu_product_category_menu(array $variables) {
+    echo '<pre>';
+	print_r($variables);
+	exit;
 }
 
