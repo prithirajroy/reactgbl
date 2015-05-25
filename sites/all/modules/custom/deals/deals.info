@@ -1,0 +1,8 @@
+name = Deals
+description = Auto create Deals node while saving a discount
+core = 7.x
+
+dependencies[] = commerce_discount
+
+
+

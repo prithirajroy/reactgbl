@@ -1,0 +1,140 @@
+<?php
+
+function deals_form_alter(&$form, &$form_state, $form_id){
+  
+  if($form_id == 'commerce_discount_form'){
+     $form['#submit'][] = 'deals_form_submit';
+  }elseif($form_id == 'commerce_discount_edit_order_discount_form'){
+      //$form['#submit'][] = 'deals_form_submit';
+  }elseif($form_id == 'commerce_discount_edit_product_discount_form'){
+      $form['#submit'][] = 'deals_form_submit';
+  }
+
+  if($form_id == 'deals_node_form'){
+    $form['#submit'][] = 'deals_form_submit';   
+  }
+
+}
+
+function deals_form_submit($form, &$form_state){
+  //echo '<pre>';print_r($form_state['build_info']['form_id']);echo '</pre>';die();
+  //echo '<pre>';print_r($form_state['values']);echo '</pre>';die();
+  $arr = $form_state['values']['commerce_discount_fields']['inline_conditions']['und'];
+  $id = array();
+  
+  if(!empty($arr)){
+    foreach ($arr as $key => $value) {
+      $settings = $value['condition_settings'];
+      if(array_key_exists('sku', $settings)) {
+        $sku = $settings['sku'];
+        foreach($sku as $product){
+          $id[] = get_product_display_id_by_sku($product['product_id']);
+
+        }
+      }elseif(array_key_exists('terms', $settings)){
+        $terms = $settings['terms'];
+        foreach($terms as $term){
+          $ids = get_product_display_id_by_term($term['target_id']);
+          $id = array_merge($id, $ids);
+        }
+          
+      } 
+    }
+    //echo '<pre>';print_r(array_unique($id));echo '</pre>';die();
+    $id = array_unique($id);
+    global $user;
+    if($form_state['build_info']['form_id'] == 'commerce_discount_form'){
+      $node = new stdClass();
+    }elseif($form_state['build_info']['form_id'] == 'commerce_discount_edit_order_discount_form' || $form_state['build_info']['form_id'] == 'commerce_discount_edit_product_discount_form') {
+      
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'deals')
+        ->propertyCondition('status', NODE_PUBLISHED)
+        ->fieldCondition('field_discount_name', 'value', $form_state['values']['name'], '=');
+        
+      $result = $query->execute();
+
+      if (isset($result['node'])) {
+        $deal_nid = array_keys($result['node']);
+        $node = node_load($deal_nid[0]);
+      }else{
+        $node = new stdClass();
+      }
+
+    }
+    
+    $node->title = $form_state['values']['component_title'];
+    $node->type = "deals";
+    node_object_prepare($node); // Sets some defaults. Invokes hook_prepare() and hook_node_prepare().
+    $node->language = LANGUAGE_NONE;
+    $node->uid = $user->uid; 
+    $node->status = 1;
+    $node->promote = 0;
+    $node->comment = 0;
+
+    if(!empty($id)){
+      unset($node->field_referenced_products[$node->language]);
+      $node->field_referenced_products[$node->language] = array();
+      foreach($id as $key => $val){
+        // Entity reference field
+        $node->field_referenced_products[$node->language][] = array(
+          'nid' => $val,
+          '_weight' => $key,
+        );     
+      }
+
+    }
+
+    $node->field_duration[$node->language][0]['value'] = date('Y-m-d h:i', $form_state['values']['commerce_discount_fields']['commerce_discount_date']['und'][0]['value']);
+    
+    $node->field_duration[$node->language][0]['value2'] = date('Y-m-d h:i', $form_state['values']['commerce_discount_fields']['commerce_discount_date']['und'][0]['value2']);
+    
+    $node->field_discount_name[$node->language][0]['value'] = $form_state['values']['name'];
+    $node = node_submit($node); // Prepare node for saving
+    node_save($node);
+    
+    drupal_set_message( "<a href='".$GLOBALS['base_url']."/node/".$node->nid."/edit?destination=admin/content'>Upload Deal image & edit content here</a>");
+    
+
+  }
+
+}
+
+function get_product_display_id_by_sku($pid){
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node', '=')
+    ->propertyCondition('type', 'product_display')
+    ->fieldCondition('field_product', 'product_id', $pid, '=')
+    ->range(0, 1);
+  if ($result = $query->execute()) {
+    return key($result['node']);
+  }
+}
+
+function get_product_display_id_by_term($tid){
+  $result = db_query("SELECT node.nid AS nid, node.sticky AS node_sticky, node.created AS node_created, 'node' AS field_data_field_product_node_entity_type
+            FROM 
+            {node} node
+            WHERE (( (node.status = 1 OR (node.uid = 1 AND 1 <> 0 AND 1 = 1) OR 1 = 1) AND (node.nid IN  (SELECT tn.nid AS nid
+            FROM 
+            {taxonomy_index} tn
+            LEFT OUTER JOIN {taxonomy_term_hierarchy} th ON th.tid = tn.tid
+            LEFT OUTER JOIN {taxonomy_term_hierarchy} th1 ON th.parent = th1.tid
+            WHERE ( (tn.tid = :tid) OR (th1.tid = :tid) ))) ))
+            ORDER BY node_sticky DESC, node_created DESC
+            ", array(':tid' => $tid));
+
+  $records = $result->fetchAll();
+  $nids = array();
+  foreach($records as $record){
+     $nids[] = $record->nid; 
+  }
+  
+  return $nids;
+
+}
+
+
+
+?>
