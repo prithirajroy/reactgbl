@@ -15,52 +15,8 @@
                 	<!-- main slider carousel -->
                 	
                     <div class="col-md-9 col-sm-9 col-md-offset-3 col-sm-offset-3" class="carousel-bounding-box">
-                       <div class="row">
-                      	 	<div class="col-md-12">
-                      	 		<div class="slider-part">
-                       				 <div id="myCarousel" class="carousel slide">
-                            <!-- main slider carousel items -->
-                            <div class="carousel-inner">
-                                <div class="active item" data-slide-number="0">
-                                    <img src="<?php print $directory;?>/images/slider-pic.jpg" class="img-responsive rsp_image">
-                                    <div class="carousel-caption md_slider_cap">
-                                    	<h4><a href="#">Some urges people to vote for growth</a></h4>
-                                        "Today is a historic day for Delhiites. It's the day for them to decide what type of Delhi they want," Bedi said after casting her vote. <a href="#" class="btn btn-link">More >></a>
-                                    </div>
-                                </div>
-                                <div class="item" data-slide-number="1">
-                                  <img src="<?php print $directory;?>/images/slider-pic.jpg" class="img-responsive rsp_image">                                  
-                                </div>
-                                <div class="item" data-slide-number="2">
-                                    <img src="<?php print $directory;?>/images/slider-pic.jpg" class="img-responsive rsp_image">   
-                                     <div class="carousel-caption md_slider_cap">
-                                    	<h4><a href="#">Some urges people to vote for growth</a></h4>
-                                        "Today is a historic day for Delhiites. It's the day for them to decide what type of Delhi they want," Bedi said after casting her vote. <a href="#" class="btn btn-link">More >></a>
-                                    </div>                                
-                                </div>
-                                <div class="item" data-slide-number="3">
-                                    <img src="<?php print $directory;?>/images/slider-pic.jpg" class="img-responsive rsp_image">    
-                                    <div class="carousel-caption md_slider_cap">
-                                    	<h4><a href="#">Some urges people to vote for growth</a></h4>
-                                        "Today is a historic day for Delhiites. It's the day for them to decide what type of Delhi they want," Bedi said after casting her vote. <a href="#" class="btn btn-link">More >></a>
-                                    </div>                               
-                                </div>
-                                <div class="item" data-slide-number="4">
-                                    <img src="<?php print $directory;?>/images/slider-pic.jpg" class="img-responsive rsp_image">
-                                    <div class="carousel-caption md_slider_cap">
-                                    	<h4><a href="#">Some urges people to vote for growth</a></h4>
-                                        "Today is a historic day for Delhiites. It's the day for them to decide what type of Delhi they want," Bedi said after casting her vote. <a href="#" class="btn btn-link">More >></a>
-                                    </div>                                   
-                                </div>
-                            </div>
-                            <!-- main slider carousel nav controls --> 
-                            <a class="carousel-control left" href="#myCarousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-    
-                            <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                	 			</div>
-                	 		</div>
-                	   </div>
+                       <?php $block = module_invoke('views', 'block_view', 'home_page_deal-block');  ?>
+                       <?php print render ($block);  ?>
                 	   <div class="row shop-more-list">
                 	   	   <div class="col-md-3 col-sm-3 col-xs-3">
                 	   	   		<a href="#"><img src="<?php print $directory;?>/images/top-static-img-1.jpg" alt="" /></a>
