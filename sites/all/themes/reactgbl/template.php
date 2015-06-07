@@ -129,11 +129,13 @@ function reactgbl_preprocess_block(&$variables) {
  * Implements theme_menu_tree().
  */
 function reactgbl_menu_tree($variables) {
- 	
+ //echo $variables['theme_hook_original'].'<br/>';	
   if($variables['theme_hook_original'] == 'menu_tree__user_menu'){	
 		return $variables['tree']; 	
   }else if($variables['theme_hook_original'] == 'menu_tree__main_menu'){
 		return '<ul class="nav navbar-nav">' . $variables['tree'] . '</ul>';
+  }else if($variables['theme_hook_original'] == 'menu_tree__menu_product_category_menu'){
+  		return '<ul class="shop-list">' . $variables['tree'] . '</ul>';
   }else{
 		return '<ul class="menu clearfix">' . $variables['tree'] . '</ul>';
   }
@@ -169,9 +171,11 @@ function reactgbl_preprocess_region(&$variables) {
 	global $base_url;
 	if($variables['elements']['#region']){
 	    if($variables['elements']['#region'] == 'header'){
+	    	$search_bar = drupal_get_form('search_form');
+	    	$search_box = drupal_render($search_bar);
 			$variables['logo'] = theme_get_setting('logo');
 			$variables['front_page'] = $base_url;
-			$variables['search_bar']  = $variables['elements']['search_form'];
+			$variables['search_bar']  = $search_box;
 			//$variables['main_menu'] = $variables['elements']['system_main-menu'];
 			//$variables['user_menu'] = $variables['elements']['system_user-menu'];
 		}
@@ -189,10 +193,9 @@ function reactgbl_menu_link__main_menu(array $variables) {
 	  $title = $element['#title'];
 	  $attr = drupal_attributes($element['#attributes']);
 	  $output ='';
-	  $custom_class = '';
 	  $output .= '<li ' . $attr . '>';
 			$output .= '<a href="'.$element['#href'].'">'.$title.'</a>';
-	  $output . '</li>';
+	  $output .= '</li>';
 	  
 	  return $output;
 }
@@ -274,8 +277,43 @@ function reactgbl_menu_link__user_menu(array $variables) {
  * Implements sidebar_menu().
  */
 function reactgbl_menu_link__menu_product_category_menu(array $variables) {
-    echo '<pre>';
-	print_r($variables);
-	exit;
+      global $user;
+	  global $base_url;
+	  $element = $variables['element'];
+	  $title = $element['#title'];
+	  $href = $element['#href'];
+	  $term_id = explode('taxonomy/term/', $href);
+	  $attr = drupal_attributes($element['#attributes']);
+	  $output = '';
+	  $output .= '<li ' . $attr . '">';
+	  $output .= '<a href="'.$href.'">'.$title.'</a>';
+	  if(count(taxonomy_get_children($term_id[1])) != 0){
+	  		$output .= '<ul class="mega-drop-down">';
+	  		$output .= '<h2><a href="#">'.$title.'</a></h2>';	
+	  		$output .= '	<div class="row">';
+	  			foreach(taxonomy_get_children($term_id[1]) as $subchildObj):
+	  				$output .= '<li class="col-md-3 col-sm-6">';
+	  					$output .= '<ul>';
+	  						$output .= '<li><a href="#">'.$subchildObj->name.'</a></li>';
+	  						if(count(taxonomy_get_children($subchildObj->tid)) != 0):
+	  							foreach(taxonomy_get_children($subchildObj->tid) as $subSubChildObj):
+	  								$output .= '<li><a href="'.$subSubChildObj->tid.'">'.$subSubChildObj->name.'</a></li>';
+	  							endforeach;
+	  						endif;	
+	  					$output .= '</ul>';
+	  				$output .= '</li>';
+	  			endforeach;
+	  		$output .= '<li class="col-md-3 col-sm-6">';
+	  			$output .= '<ul>';
+	  				$output .= '<li><a href="#"><img src="http://i.vimeocdn.com/video/476846649_100x75.jpg" alt="" /></a></li>';
+	  			$output .= '</ul>';
+	  		$output .= '</li>';	
+	  		$output .= '	</div>';
+	  		$output .= '</ul>';
+
+	  }
+	  $output .= '</li>';	  
+	  
+	  return $output;	
 }
 
