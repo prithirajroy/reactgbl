@@ -85,52 +85,16 @@
  * @see html.tpl.php
  */
 ?>
-<div id="page-wrapper"><div id="page">
 
-  <?php print render($page['header']); ?>
-
-    <?php if ($main_menu): ?>
-      <div id="main-menu" class="navigation">
-        <?php print theme('links__system_main_menu', array(
-          'links' => $main_menu,
-          'attributes' => array(
-            'id' => 'main-menu-links',
-            'class' => array('links', 'clearfix'),
-          ),
-          'heading' => array(
-            'text' => t('Main menu'),
-            'level' => 'h2',
-            'class' => array('element-invisible'),
-          ),
-        )); ?>
-      </div> <!-- /#main-menu -->
-    <?php endif; ?>
-
-    <?php if ($secondary_menu): ?>
-      <div id="secondary-menu" class="navigation">
-        <?php print theme('links__system_secondary_menu', array(
-          'links' => $secondary_menu,
-          'attributes' => array(
-            'id' => 'secondary-menu-links',
-            'class' => array('links', 'inline', 'clearfix'),
-          ),
-          'heading' => array(
-            'text' => t('Secondary menu'),
-            'level' => 'h2',
-            'class' => array('element-invisible'),
-          ),
-        )); ?>
-      </div> <!-- /#secondary-menu -->
-    <?php endif; ?>
-
-  </div></div> <!-- /.section, /#header -->
 
   <?php if ($messages): ?>
     <div id="messages"><div class="section clearfix">
       <?php print $messages; ?>
     </div></div> <!-- /.section, /#messages -->
   <?php endif; ?>
-
+<?php print render($page['header']); ?>
+<section  class="banner-section" style="clear:both;">
+	<div class="container md-section"> 
   <?php if ($page['featured']): ?>
     <div id="featured"><div class="section clearfix">
       <?php print render($page['featured']); ?>
@@ -201,7 +165,8 @@
         <?php print render($page['footer_fourthcolumn']); ?>
       </div> <!-- /#footer-columns -->
     <?php endif; ?>
-
+</div>
+</section>
     <?php if ($page['footer']): ?>
       <div id="footer" class="clearfix">
         <?php print render($page['footer']); ?>
