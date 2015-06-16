@@ -113,11 +113,6 @@
 }
 
 
-
-@media only screen and (max-width: 360px){
-	
-}
-
 @media only screen and (max-width: 767px){
 	.logo-part {
 	    margin: 9px 0 0;
@@ -451,5 +446,8 @@
 	}
 	.transuctiona{
 		margin-top: 8px;
+	}
+	.serarch-part-outer .col-xs-4{
+		padding-left: 0;
 	}
 }

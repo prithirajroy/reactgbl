@@ -62,5 +62,14 @@ jQuery(document).ready(function(){
 			jQuery(".latest_news .mid img").attr("src", jQuery(this).attr("src"));
 		})
 	});
+
+	    jQuery('.not-front .side-nav').hover(function(){
+	        jQuery('.not-front .navbar-collapse.collapse.inner-side-nav').slideDown('slow');
+	    }, function(){
+	    	jQuery('.not-front .navbar-collapse.collapse.inner-side-nav').slideUp('fast');
+	    });
+	    jQuery(function () {
+		  jQuery('[data-toggle="tooltip"]').tooltip()
+		})
 	
 });

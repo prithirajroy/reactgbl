@@ -1,1 +1,3 @@
 li.expanded, li.collapsed, li.leaf{padding: 0;}
+.not-front .navbar-collapse.collapse.inner-side-nav{display:none;}
+.not-front .side-nav{cursor: pointer;}

@@ -84,7 +84,7 @@
                 		 </div>
 						 
 						 
-                		 <div class="collapse navbar-collapse" id="left-nav">
+                		 <div class="collapse navbar-collapse inner-side-nav" id="left-nav">
 	                		<?php 
 								$category_menu = menu_tree_output(menu_tree_all_data('menu-product-category-menu'));
 								print @drupal_render($category_menu);

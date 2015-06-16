@@ -285,6 +285,7 @@ function reactgbl_menu_link__menu_product_category_menu(array $variables) {
 	  $term_id = explode('taxonomy/term/', $href);
 	  $attr = drupal_attributes($element['#attributes']);
 	  $output = '';
+	  if(count(taxonomy_get_parents($term_id[1])) == 0){
 	  $output .= '<li ' . $attr . '">';
 	  $output .= '<a href="'.$href.'">'.$title.'</a>';
 	  if(count(taxonomy_get_children($term_id[1])) != 0){
@@ -313,7 +314,7 @@ function reactgbl_menu_link__menu_product_category_menu(array $variables) {
 
 	  }
 	  $output .= '</li>';	  
-	  
+	  }
 	  return $output;	
 }
 

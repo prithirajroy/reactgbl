@@ -88,38 +88,45 @@
 
 
 
-<?php if ($messages): ?>
-    <div id="messages"><div class="section clearfix">
+  <?php if ($messages): ?>
+
+    <div id="messages">
+      <div class="section clearfix">
       <?php print $messages; ?>
-    </div></div> <!-- /.section, /#messages -->
+      </div>
+    </div> <!-- /.section, /#messages -->
+  
   <?php endif; ?>
 
- 
-
-
+  <?php print render($page['header']); ?>
+  
+  
     <?php if ($breadcrumb): ?>
       <div id="breadcrumb"><?php print $breadcrumb; ?></div>
     <?php endif; ?>
 
 
 
-<?php if ($tabs): ?>
+    <?php if ($tabs): ?>
         <div class="tabs">
           <?php print render($tabs); ?>
         </div>
-      <?php endif; ?>
-      <?php print render($page['help']); ?>
-      <?php if ($action_links): ?>
+    <?php endif; ?>
+    
+    <?php if ($action_links): ?>
         <ul class="action-links">
           <?php print render($action_links); ?>
         </ul>
-      <?php endif; ?>
-      <?php print render($page['content']); ?>
-      <?php print $feed_icons; ?>
+    <?php endif; ?>
+    
+    <?php print render($page['content']); ?>
+    
 
 
- <?php if ($page['footer']): ?>
+   <?php if ($page['footer']): ?>
+
       <div id="footer" class="clearfix">
         <?php print render($page['footer']); ?>
       </div> <!-- /#footer -->
-    <?php endif; ?>     
+    
+  <?php endif; ?>     
