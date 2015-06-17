@@ -80,7 +80,7 @@
 ?>
 
 <pre> 
-<?php print_r($content); 
+<?php //print_r($content); 
 //print render(drupal_get_form('commerce_cart_add_to_cart_form_1'));
 ?>
 
@@ -96,13 +96,17 @@
            			<div class="row product-details-section">
            				<div class="col-md-5 col-sm-6">
            					<div class="product-big-pic">
-           						 <img src="<?php print $GLOBALS['base_url'] ?>/sites/all/themes/reactgbl/images/product-image.JPG" alt="" />
+           						 <img src="" alt="" />
            					</div>
-           					<div class="thum-pic-part clearfix">
-           						<a href="#"><img src="<?php print $GLOBALS['base_url'] ?>/sites/all/themes/reactgbl/images/thumb-1.JPG" alt="" /></a>
-           						<a href="#"><img src="<?php print $GLOBALS['base_url'] ?>/sites/all/themes/reactgbl/images/thumb-4.JPG" alt="" /></a>
-           						<a href="#"><img src="<?php print $GLOBALS['base_url'] ?>/sites/all/themes/reactgbl/images/thumb-2.JPG" alt="" /></a>
-           						<a href="#"><img src="<?php print $GLOBALS['base_url'] ?>/sites/all/themes/reactgbl/images/thumb-3.JPG" alt="" /></a>
+           					<div class="thum-pic-part clearfix product_thumbs">
+           						<?php $images = $content['product:field_product_image']['#object']->field_product_image['und'] ;
+                          foreach($images as $img){
+                            $uri = file_create_url($img['uri']);  ?>
+                            <a href="javascript:void(0);"><img src="<?php print $uri; ?>" width="50" height="50"/></a>
+                    <?php 
+                          }
+
+                      ?>
            					</div>
            					<div class="product-text">
            						<p>
@@ -112,11 +116,11 @@
            				</div> 
            				<div class="col-md-7 col-sm-6">
            					<div class="product-details-infromation">
-           						 <h2 class="product-header">Napolitano Pasta Sauce - L'Exclusif - 380 gm
-           						 	<span><a href="#" class="addto-whlst" data-toggle="tooltip" data-placement="top" title="add to mylist"><i class="fa fa-list-alt"></i></a></span>
+           						 <h2 class="product-header"><?php print $title; ?>
+           						 	<span><a href="javascript:void(0);" class="addto-whlst add_wishlist_btn" data-toggle="tooltip" data-placement="top" title="add to mylist"><i class="fa fa-list-alt"></i></a></span>
            						 </h2>
-           						 <p class="product-desription">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem<br /> ipsum Lorem ipsum Lorem ipsum
-           						 Lorem ipsum<br /> Lorem ipsum Lorem ipsum Lorem ipsum Lorem<br /> ipsum Lorem ipsum Lorem ipsum
+           						 <p class="product-desription">
+                          <?php print render($content['body']); ?>
            						 </p>
            						 <div class="share-part">
            						 	<span>Share</span>
@@ -124,9 +128,10 @@
 									<a href="#"><i class="fa fa-twitter-square"></i></a>
            						 </div>
            						 
-           						 <div class="value-pro">$120</div>
+           						 <div class="value-pro"><?php print render($content['product:commerce_price']); ?></div>
            						 <div class="add-crt-qty">
-           						 	 <a href="#" class="addto-cart-pro"><i class="fa fa-shopping-cart"></i>Add</a>
+           						 	 <div style="display:none;"><?php print render($content['field_product']); ?></div>
+                         <a href="#" class="addto-cart-pro add_cart_btn"><i class="fa fa-shopping-cart"></i>Add</a>
            						 	 <div class="qtyy"><span>Qty</span><input type="number" value=""/></div>
            						 </div>           						
            					</div>
@@ -136,7 +141,7 @@
            				<div class="col-md-12">
 							 <h2 class="inner-headr-text">Product <span>Description</span></h2>		
 							 <p>
-							 	Crunchy and delicious, Chikki by L’Exclusif Amaranth make for a great snack anytime during the stay. You can now indulge your sweet tooth without any guilt as this delicious Amaranth Chikki comes with a zero trans fat and zero cholesterol content. This traditional ready-to-eat Indian sweet is packed with wholesome nutrition.
+							 	<?php print render($content['product:field_product_description']); ?>
 							 </p>		 
 						</div>
            			</div>
@@ -214,3 +219,72 @@
            </div> 	     
     </div>
 </section>
+
+
+
+
+
+<script>
+  $(document).ready(function(){
+      $('.hover-side-nav').hover(function(){
+          $('.navbar-collapse.collapse.inner-side-nav').fadeIn(500)
+      },function(){
+          $('.navbar-collapse.collapse.inner-side-nav').fadeOut(500)
+      })
+      $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  }); 
+
+   
+    $(document).ready(function() {
+       
+      $('.product_thumbs a').click(function(){
+        var src = $(this).find('img').attr('src');
+        $('.product-big-pic img').attr('src', src);
+      });
+
+      $('.product_thumbs a:first').trigger('click');
+
+      $('.add_cart_btn').click(function(){
+          $('#edit-submit').trigger('click');
+      });  
+
+      $('.add_wishlist_btn').click(function(){
+           $('#edit-add-to-wishlist').trigger('click');
+      });
+
+       $("#owl-demo2").owlCarousel({
+        items : 6,
+        loop:false,
+        slideSpeed : 500,
+          paginationSpeed : 400,
+        // lazyLoad : true,
+        navigation : true
+        });     
+        
+      $("#owl-demo").owlCarousel({
+        loop:false,
+        navigation : true, // Show next and prev buttons
+        slideSpeed : 500,
+        paginationSpeed : 400,
+        singleItem:true,
+        pagination :false
+      // "singleItem:true" is a shortcut for:
+      // items : 1,
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+       
+      });
+      $('.barnd-list').click(function (){
+          var checkbox = $(this).find('input[type=checkbox]');
+         checkbox.prop("checked", !checkbox.prop("checked"));
+      });
+
+      $('.field-name-field-product-description').remove();
+       
+    });
+    
+</script>

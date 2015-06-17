@@ -21,6 +21,7 @@ scripts[] = js/jquery.jcarousellite.js
 scripts[] = js/html5shiv.js
 scripts[] = js/respond.min.js
 scripts[] = js/custom/contrib-plugincall.js
+scripts[] = js/owl.carousel.js
 
 ;regions
 regions[header] = Header
