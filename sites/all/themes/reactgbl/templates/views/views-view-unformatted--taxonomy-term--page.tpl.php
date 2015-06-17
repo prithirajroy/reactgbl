@@ -63,7 +63,13 @@
 			 			</div>
 			 	<div class="row product-listing">
 			 			
-			 	<?php foreach ($rows as $id => $row): ?>	
+			 	<?php foreach ($rows as $id => $row): ?>
+			 
+			 	<?php
+			 		//echo '<pre>';
+			 		//print_r($view->result[$id]->field_field_product_1[0]['rendered']['add_to_wishlist']);
+			 		//echo '<pre>';
+			 	?>	
 			 		<div class="repeat-list-prodct">
 			 			<div class="inner-product-box">
 			 				<div class="listing-product-box">
@@ -74,9 +80,23 @@
 			 				</div>
 			 				<div class="hover-product-box">			 					
 			 					<h3><a href="#"><?php print $view->result[$id]->field_field_product[0]['raw']['entity']->title; ?></a></h3>
-			 					<a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+			 				
+			 					<form class="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#attributes']['class'][0].' '.$view->result[$id]->field_field_product_1[0]['rendered']['#attributes']['class'][1]; ?>" action="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#action']; ?>" method="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#method'] ;?>" id="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#id'];?>" accept-charset="UTF-8">		
+			 					<!--form attribuetes-->
+			 					<input type="hidden" name="product_id" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['product_id']['#value']; ?>">
+								<input type="hidden" name="form_build_id" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['form_build_id']['#value'];?>">
+								<input type="hidden" name="form_token" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['form_token']['#value'];?>">
+								<input type="hidden" name="form_id" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['form_id']['#value'];?>">	
+								<div id="edit-line-item-fields" class="form-wrapper"></div>
+								<input type="hidden" name="quantity" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['quantity']['#value'];?>">
+			 					<!--form attribuetes-->
+			 							
+			 					<input class="wishlist form-submit" type="submit" id="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['add_to_wishlist']['#id'] ;?>" name="op" value="<?php print t('Add to Wishlist') ;?>">		
+			 					
+			 					<!--<a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
 			 						<i class="fa fa-list-alt"></i>
-			 					</a> 
+			 					</a>--> 
+			 					
 			 					<div class="hrsdelivery">Limited Availability</div>
 			 					<div class="wait-available">
 			 						<a href="#">250g</a>
@@ -84,11 +104,19 @@
 			 						<a href="#">55Kg</a>			 						
 			 					</div>
 			 					<div class="addto-crt">
-			 						<a href="#">
+			 						
+			 						<!--<a href="#">
 			 							<i class="fa fa-shopping-cart"></i>Add to Cart
-			 						</a>
+			 						</a>-->
+			 						
+			 						<input type="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['submit']['#type'] ;?>" id="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['submit']['#id'] ;?>" name="op" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['submit']['#value'] ;?>" class="form-submit">
 			 						
 			 					</div>
+
+			 					
+			 					</form>
+
+
 			 				</div>
 			 			</div>
 			 		</div>
