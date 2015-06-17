@@ -65,11 +65,6 @@
 			 			
 			 	<?php foreach ($rows as $id => $row): ?>
 			 
-			 	<?php
-			 		//echo '<pre>';
-			 		//print_r($view->result[$id]->field_field_product_1[0]['rendered']['add_to_wishlist']);
-			 		//echo '<pre>';
-			 	?>	
 			 		<div class="repeat-list-prodct">
 			 			<div class="inner-product-box">
 			 				<div class="listing-product-box">
