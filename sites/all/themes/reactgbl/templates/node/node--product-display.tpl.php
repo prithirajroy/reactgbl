@@ -148,74 +148,7 @@
            			
            		</div>
          <!--left panel end--> 		
-           		<div class="col-md-3">
-           			  <div class="may-like-outer">
-           			  		<h2>You may Like</h2>
-           			  		<div class="like-product-box clearfix">
-       			  	    		<div class="content mCustomScrollbar">
-           			  			 <div class="may-like-box">
-           			  			 	 <figure class="like-pic">
-           			  			 	 	<a href="#"><img src="sites/all/themes/reactgbl/images/may-like-1.JPG" alt="" /></a>           			  			 
-           			  			 	 	<a href="#" class="addto-whlst" data-toggle="tooltip" data-placement="left" title="add to mylist"><i class="fa fa-list-alt"></i></a>
-           			  			 	 </figure>
-           			  			 	 <div class="may-like-details">
-           			  			 	 	<h3 class="product-tilte"><a href="#">Arrabiata Pasta Sauce - L'exclusif</a></h3>
-           			  			 	 	<div class="ad-cartt-weight">
-           			  			 	 		<dt class="waight-pro">250g</dt>
-           			  			 	 		<dt><a href="#" class="add-cart-to"><i class="fa fa-shopping-cart"></i>add to cart</a></dt>
-           			  			 	 	</div>
-           			  			 	 	<div class="rating"><span>Rating:</span><span>8.5</span></div>
-           			  			 	 </div>
-           			  			 </div>
-           			  			 <div class="may-like-box">
-           			  			 	 <figure class="like-pic">
-           			  			 	 	<a href="#"><img src="sites/all/themes/reactgbl/images/may-like-1.JPG" alt="" /></a>           			  			 
-           			  			 	 	<a href="#" class="addto-whlst" data-toggle="tooltip" data-placement="left" title="add to mylist"><i class="fa fa-list-alt"></i></a>
-           			  			 	 </figure>
-           			  			 	 <div class="may-like-details">
-           			  			 	 	<h3 class="product-tilte"><a href="#">Arrabiata Pasta Sauce - L'exclusif</a></h3>
-           			  			 	 	<div class="ad-cartt-weight">
-           			  			 	 		<dt class="waight-pro">250g</dt>
-           			  			 	 		<dt><a href="#" class="add-cart-to"><i class="fa fa-shopping-cart"></i>add to cart</a></dt>
-           			  			 	 		<div class="rating"><span>Rating:</span><span>8.5</span></div>
-           			  			 	 	</div>
-           			  			 	 	
-           			  			 	 </div>
-           			  			 </div>
-           			  			 <div class="may-like-box">
-           			  			 	 <figure class="like-pic">
-           			  			 	 	<a href="#"><img src="sites/all/themes/reactgbl/images/may-like-1.JPG" alt="" /></a>           			  			 
-           			  			 	 	<a href="#" class="addto-whlst" data-toggle="tooltip" data-placement="left" title="add to mylist"><i class="fa fa-list-alt"></i></a>
-           			  			 	 </figure>
-           			  			 	 <div class="may-like-details">
-           			  			 	 	<h3 class="product-tilte"><a href="#">Arrabiata Pasta Sauce - L'exclusif</a></h3>
-           			  			 	 	<div class="ad-cartt-weight">
-           			  			 	 		<dt class="waight-pro">250g</dt>
-           			  			 	 		<dt><a href="#" class="add-cart-to"><i class="fa fa-shopping-cart"></i>add to cart</a></dt>
-           			  			 	 		<div class="rating"><span>Rating:</span><span>8.5</span></div>
-           			  			 	 	</div>
-           			  			 	 	
-           			  			 	 </div>
-           			  			 </div>
-           			  			 <div class="may-like-box">
-           			  			 	 <figure class="like-pic">
-           			  			 	 	<a href="#"><img src="sites/all/themes/reactgbl/images/may-like-1.JPG" alt="" /></a>           			  			 
-           			  			 	 	<a href="#" class="addto-whlst" data-toggle="tooltip" data-placement="left" title="add to mylist"><i class="fa fa-list-alt"></i></a>
-           			  			 	 </figure>
-           			  			 	 <div class="may-like-details">
-           			  			 	 	<h3 class="product-tilte"><a href="#">Arrabiata Pasta Sauce - L'exclusif</a></h3>
-           			  			 	 	<div class="ad-cartt-weight">
-           			  			 	 		<dt class="waight-pro">250g</dt>
-           			  			 	 		<dt><a href="#" class="add-cart-to"><i class="fa fa-shopping-cart"></i>add to cart</a></dt>
-           			  			 	 		<div class="rating"><span>Rating:</span><span>8.5</span></div>
-           			  			 	 	</div>
-           			  			 	 	
-           			  			 	 </div>
-           			  			 </div>
-           			  		    </div>
-           			  		</div>
-           			  </div>
-           		</div>
+           	
            </div> 	     
     </div>
 </section>
