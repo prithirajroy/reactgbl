@@ -216,7 +216,7 @@
          checkbox.prop("checked", !checkbox.prop("checked"));
       });
 
-      $('.field-name-field-product-description').remove();
+      $('.field-name-field-product-description > :first').remove();
        
     });
     
