@@ -212,50 +212,11 @@
 </section>
 
 
-<footer class="footer"><!-- Footer start -->
-	<div class="container">
-		<div class="row">
-			 <div class="col-md-6">
-			 	   <ul class="footer-link">
-			 	   		 <li class="active"><a href="#" title="">Home</a></li>
-                        <li><a href="#" title="">About us</a></li> 
-                        <li><a href="#" title="">Profiles</a></li>  	                               
-                        <li><a href="#" title="">Links1</a></li>
-                        <li><a href="#" title="">Portfolio</a></li>
-                        <li><a href="#" title="">contact us</a></li>
-			 	   </ul>
-			 </div>
-			 <div class="col-md-4 col-sm-6 col-xs-12 transuctiona text-right">
-					<a href="#"><img src="<?php print $directory;?>/images/pay-pal.png" alt="" /></a>
-					<a href="#"><img src="<?php print $directory;?>/images/master-card.png" alt="" /></a>
-					<a href="#"><img src="<?php print $directory;?>/images/maestro-card.png" alt="" /></a>
-					<a href="#"><img src="<?php print $directory;?>/images/visa-card.png" alt="" /></a>	
-				</div>
-			 <div class="col-md-2 col-sm-6 social-part text-right">
-			 	<a href="#"><i class="fa fa-facebook-square"></i></a>
-				<a href="#"><i class="fa fa-twitter-square"></i></a>
-				<a href="#"><i class="fa fa-google-plus-square"></i></a>
-				<a href="#"><i class="fa fa-pinterest-square"></i></a>
-				
-			 </div>
-		</div>						
-	</div>
-	<div class="footer-botom">
-		<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-6 text-center">
-					<div class="copy-part">&copy;copyright</div> 
-				 	 <ul class="footer-link"> 	                               
-	                	<li><a href="#" title="">Privacy Policy</a></li>
-		                <li><a href="#" title="">Data Policy</a></li>
-		                <li><a href="#" title="">Terms of Service</a></li>
-	                </ul>
-					</div>	
-										
-					
-					
-			</div>
-			
-			</div>
-		</div>
-</footer><!-- Footer end -->
+<?php if ($page['footer']): ?>
+
+      <div id="footer" class="clearfix">
+        <?php print render($page['footer']); ?>
+      </div> <!-- /#footer -->
+    
+  <?php endif; ?>     
+

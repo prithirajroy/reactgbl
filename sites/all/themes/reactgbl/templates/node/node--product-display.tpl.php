@@ -79,12 +79,10 @@
  */
 ?>
 
-<pre> 
-<?php //print_r($content); 
-//print render(drupal_get_form('commerce_cart_add_to_cart_form_1'));
-?>
+ 
+<?php global $base_url; ?>
 
-</pre>
+
 
 
 <section  class="banner-section">
@@ -153,71 +151,293 @@
     </div>
 </section>
 
-
-
-
-
-<script>
-  $(document).ready(function(){
-      $('.hover-side-nav').hover(function(){
-          $('.navbar-collapse.collapse.inner-side-nav').fadeIn(500)
-      },function(){
-          $('.navbar-collapse.collapse.inner-side-nav').fadeOut(500)
-      })
-      $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  }); 
-
-   
-    $(document).ready(function() {
-       
-      $('.product_thumbs a').click(function(){
-        var src = $(this).find('img').attr('src');
-        $('.product-big-pic img').attr('src', src);
-      });
-
-      $('.product_thumbs a:first').trigger('click');
-
-      $('.add_cart_btn').click(function(){
-          $('#edit-submit').trigger('click');
-      });  
-
-      $('.add_wishlist_btn').click(function(){
-           $('#edit-add-to-wishlist').trigger('click');
-      });
-
-       $("#owl-demo2").owlCarousel({
-        items : 6,
-        loop:false,
-        slideSpeed : 500,
-          paginationSpeed : 400,
-        // lazyLoad : true,
-        navigation : true
-        });     
-        
-      $("#owl-demo").owlCarousel({
-        loop:false,
-        navigation : true, // Show next and prev buttons
-        slideSpeed : 500,
-        paginationSpeed : 400,
-        singleItem:true,
-        pagination :false
-      // "singleItem:true" is a shortcut for:
-      // items : 1,
-      // itemsDesktop : false,
-      // itemsDesktopSmall : false,
-      // itemsTablet: false,
-      // itemsMobile : false
-       
-      });
-      $('.barnd-list').click(function (){
-          var checkbox = $(this).find('input[type=checkbox]');
-         checkbox.prop("checked", !checkbox.prop("checked"));
-      });
-
-      $('.field-name-field-product-description > :first').remove();
-       
-    });
+<!--<section class="small-selidr-section">
+  <div class="container md-section">
+    <div class="row">
+      <div class="col-md-12">
+         <h2 class="inner-headr-text">More Products From <span> L'Exclusif</span></h2>         
+      </div>      
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+         <div id="owl-demo2" class="owl-carousel owl-theme">
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                 </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                 </div>
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php //print $base_url ; ?>/sites/all/themes/reactgbl/images/smal-slider-pic1.JPG" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#">Digestive Anardhana - L'exclusif</a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div> 
+              </div> 
+      </div>
+    </div>
+  </div>
+</section>-->
+<section class="small-selidr-section">
+  <div class="container md-section">
+    <div class="row">
+      <div class="col-md-12">
+         <h2 class="inner-headr-text">More Products From <span><?php print $content['body']['#object']->field_category['und'][0]['taxonomy_term']->name; ?></span></h2>         
+      </div>      
+    </div>
     
-</script>
+    <div class="row">
+      <div class="col-md-12">
+         <div id="owl-demo2" class="owl-carousel owl-theme">
+                
+              <?php 
+                  $nodeIds = taxonomy_select_nodes($content['body']['#object']->field_category['und'][0]['tid'], $pager = TRUE, $limit = 20, $order = array('t.sticky' => 'DESC', 't.created' => 'DESC'));
+                  if($nodeIds):
+                    foreach($nodeIds as $id):
+                      $nodeObj = node_load($id); 
+                      $product_data = _get_product_by_node_ref($nodeObj->nid);
+              ?>
+
+                <div class="item">
+                  <div class="smal-slider-pro-box">
+                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                <i class="fa fa-list-alt"></i>
+              </a>
+                    <figure>
+                      <img src="<?php print file_create_url($product_data->field_product_image['und'][0]['uri']); ?>" alt="" />
+                    </figure>
+                    <div class="slider-sml-product-details">
+                      <h4><a href="#"><?php print $product_data->title; ?></a></h4>
+                        <div class="ad-cartt-weight">
+                  <dt class="waight-pro">250g</dt>
+                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                  <div class="rate-val">
+                    $50
+                  </div>
+                </div>
+                    </div>
+                  </div>                     
+                </div>
+                
+                <?php endforeach; ?>
+                <?php endif; ?>
+
+
+
+                </div>
+                    </div>
+                  </div>                     
+                </div> 
+              </div> 
+      </div>
+    </div>
+  </div>
+</section>

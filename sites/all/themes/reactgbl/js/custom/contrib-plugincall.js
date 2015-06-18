@@ -71,5 +71,62 @@ jQuery(document).ready(function(){
 	    jQuery(function () {
 		  jQuery('[data-toggle="tooltip"]').tooltip()
 		})
+
+
+		/*******************************************/
+		 $('.product_thumbs a').click(function(){
+        var src = $(this).find('img').attr('src');
+        $('.product-big-pic img').attr('src', src);
+      });
+
+      $('.product_thumbs a:first').trigger('click');
+
+      $('.add_cart_btn').click(function(){
+          $('#edit-submit').trigger('click');
+      });  
+
+      $('.add_wishlist_btn').click(function(){
+           $('#edit-add-to-wishlist').trigger('click');
+      });
+
+       $("#owl-demo2").owlCarousel({
+        items : 6,
+        loop:false,
+        slideSpeed : 500,
+          paginationSpeed : 400,
+        // lazyLoad : true,
+        navigation : true
+        });     
+        
+      $("#owl-demo").owlCarousel({
+        loop:false,
+        navigation : true, // Show next and prev buttons
+        slideSpeed : 500,
+        paginationSpeed : 400,
+        singleItem:true,
+        pagination :false
+      // "singleItem:true" is a shortcut for:
+      // items : 1,
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+       
+      });
+      $('.barnd-list').click(function (){
+          var checkbox = $(this).find('input[type=checkbox]');
+         checkbox.prop("checked", !checkbox.prop("checked"));
+      });
+
+      $('.field-name-field-product-description > :first').remove();
+
+      $('.hover-side-nav').hover(function(){
+          $('.navbar-collapse.collapse.inner-side-nav').fadeIn(500)
+      },function(){
+          $('.navbar-collapse.collapse.inner-side-nav').fadeOut(500)
+      })
+      $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 	
 });
