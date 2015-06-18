@@ -404,6 +404,8 @@
                     foreach($nodeIds as $id):
                       $nodeObj = node_load($id); 
                       $product_data = _get_product_by_node_ref($nodeObj->nid);
+                      //echo '<pre>';
+                      //print_r($product_data);
               ?>
 
                 <div class="item">
@@ -420,7 +422,7 @@
                   <dt class="waight-pro">250g</dt>
                   <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
                   <div class="rate-val">
-                    $50
+                    <?php print $product_data->commerce_price['und'][0]['amount']; ?>
                   </div>
                 </div>
                     </div>
