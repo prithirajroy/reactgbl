@@ -290,15 +290,15 @@ function reactgbl_menu_link__menu_product_category_menu(array $variables) {
 	  $output .= '<a href="'.$href.'">'.$title.'</a>';
 	  if(count(taxonomy_get_children($term_id[1])) != 0){
 	  		$output .= '<ul class="mega-drop-down">';
-	  		$output .= '<h2><a href="#">'.$title.'</a></h2>';	
+	  		$output .= '<h2><a href="'.$base_url.'/taxonomy/term/'.$term_id[1].'">'.$title.'</a></h2>';	
 	  		$output .= '	<div class="row">';
 	  			foreach(taxonomy_get_children($term_id[1]) as $subchildObj):
 	  				$output .= '<li class="col-md-3 col-sm-6">';
 	  					$output .= '<ul>';
-	  						$output .= '<li><a href="#">'.$subchildObj->name.'</a></li>';
+	  						$output .= '<li><a href="'.$base_url.'/taxonomy/term/'.$subchildObj->tid.'">'.$subchildObj->name.'</a></li>';
 	  						if(count(taxonomy_get_children($subchildObj->tid)) != 0):
 	  							foreach(taxonomy_get_children($subchildObj->tid) as $subSubChildObj):
-	  								$output .= '<li><a href="'.$subSubChildObj->tid.'">'.$subSubChildObj->name.'</a></li>';
+	  								$output .= '<li><a href="'.$base_url.'/taxonomy/term/'.$subSubChildObj->tid.'">'.$subSubChildObj->name.'</a></li>';
 	  							endforeach;
 	  						endif;	
 	  					$output .= '</ul>';

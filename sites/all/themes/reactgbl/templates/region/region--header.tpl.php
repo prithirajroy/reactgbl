@@ -1,3 +1,5 @@
+<?php global $base_url; ?>
+<?php global $user; ?>
  <!--header-->
 <header class="pg-header">
 	<div class="upper_header">
@@ -20,6 +22,7 @@
 								$tree = menu_tree_output(menu_tree_all_data('user-menu'));
 								print drupal_render($tree);
 							?>
+							<div class="col-sm-4 col-xs-4"><div class="sign_in"><div class="btn-group dropdown"><a href="<?php print $base_url.'/user/'.$user->uid;?>/wishlist" type="button" class="btn btn-default"><i class="fa fa-gift"></i><span>Wishlist</span></a></div></div></div
         			 		</div>     									 		
         			 	</div><!--end of sign in part -->        			 
         			 </div>        			 
