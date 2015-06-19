@@ -64,33 +64,23 @@
 			 	<div class="row product-listing">
 			 			
 			 	<?php foreach ($rows as $id => $row): ?>
-			 
+			 			<?php 	$pid = $view->result[$id]->_field_data['nid']['entity']->field_product['und'][0]['product_id'];		?>
 			 		<div class="repeat-list-prodct">
 			 			<div class="inner-product-box">
 			 				<div class="listing-product-box">
 			 					<figure><img src="<?php print file_create_url($view->result[$id]->field_field_product[0]['raw']['entity']->field_product_image['und'][0]['uri']); ?>" alt="" /></figure>
 			 					
 			 					<h4><?php print  $view->result[$id]->field_field_product[0]['raw']['entity']->title;?></h4>
-			 					<h6><?php print $view->result[$id]->field_field_product[0]['raw']['entity']->commerce_price['und'][0]['amount']; ?></h6>
+			 					<h6><?php print render($view->result[$id]->field_field_product[0]['rendered']['commerce_product'][$pid]['commerce_price']); ?></h6>
 			 				</div>
 			 				<div class="hover-product-box">			 					
 			 					<h3><a href="#"><?php print $view->result[$id]->field_field_product[0]['raw']['entity']->title; ?></a></h3>
-			 				
-			 					<form class="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#attributes']['class'][0].' '.$view->result[$id]->field_field_product_1[0]['rendered']['#attributes']['class'][1]; ?>" action="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#action']; ?>" method="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#method'] ;?>" id="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['#id'];?>" accept-charset="UTF-8">		
-			 					<!--form attribuetes-->
-			 					<input type="hidden" name="product_id" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['product_id']['#value']; ?>">
-								<input type="hidden" name="form_build_id" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['form_build_id']['#value'];?>">
-								<input type="hidden" name="form_token" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['form_token']['#value'];?>">
-								<input type="hidden" name="form_id" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['form_id']['#value'];?>">	
-								<div id="edit-line-item-fields" class="form-wrapper"></div>
-								<input type="hidden" name="quantity" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['quantity']['#value'];?>">
-			 					<!--form attribuetes-->
-			 							
-			 					<input class="wishlist form-submit" type="submit" id="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['add_to_wishlist']['#id'] ;?>" name="op" value="<?php print t('Add to Wishlist') ;?>">		
-			 					
-			 					<!--<a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+			 					<div style="display:none;">
+			 					<?php print render($view->result[$id]->field_field_product_1); ?>
+			 					</div>
+			 					<a class="addto-whlst add_wishlist_btn" title="" data-placement="left" data-toggle="tooltip" href="javascript:void(0);" data-original-title="add to mylist">
 			 						<i class="fa fa-list-alt"></i>
-			 					</a>--> 
+			 					</a>
 			 					
 			 					<div class="hrsdelivery">Limited Availability</div>
 			 					<div class="wait-available">
@@ -100,17 +90,10 @@
 			 					</div>
 			 					<div class="addto-crt">
 			 						
-			 						<!--<a href="#">
+			 						<a href="javascript:void(0);" class="add_cart_btn">
 			 							<i class="fa fa-shopping-cart"></i>Add to Cart
-			 						</a>-->
-			 						
-			 						<input type="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['submit']['#type'] ;?>" id="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['submit']['#id'] ;?>" name="op" value="<?php print $view->result[$id]->field_field_product_1[0]['rendered']['submit']['#value'] ;?>" class="form-submit">
-			 						
+			 						</a>
 			 					</div>
-
-			 					
-			 					</form>
-
 
 			 				</div>
 			 			</div>
@@ -122,3 +105,17 @@
 		</div>
 	</div>
 </section>
+
+
+
+<script>
+$(document).ready(function() {
+	$('.add_cart_btn').click(function(){
+        $('#edit-submit').trigger('click');
+    });  
+
+    $('.add_wishlist_btn').click(function(){
+        $('#edit-add-to-wishlist').trigger('click');
+    });
+});	
+</script>
