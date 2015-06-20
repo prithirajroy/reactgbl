@@ -82,7 +82,7 @@
  
 <?php global $base_url; ?>
 
-
+<pre><?php // print_r($content); ?></pre>
 
 
 <section  class="banner-section">
@@ -121,10 +121,12 @@
                           <?php print render($content['body']); ?>
            						 </p>
            						 <div class="share-part">
-           						 	<span>Share</span>
+           						  <span>Share</span>
            						 	<a href="#"><i class="fa fa-facebook-square"></i></a>
-									<a href="#"><i class="fa fa-twitter-square"></i></a>
+									      <a href="#"><i class="fa fa-twitter-square"></i></a>
            						 </div>
+
+                        <span><?php print render($content['product:field_weight']); ?></span>
            						 
            						 <div class="value-pro"><?php print render($content['product:commerce_price']); ?></div>
            						 <div class="add-crt-qty">
