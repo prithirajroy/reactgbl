@@ -136,7 +136,7 @@ function get_product_display_id_by_term($tid){
 }
 
    
-function _get_product_by_node_ref($node_id){
+/*function _get_product_by_node_ref($node_id){
       $product_id = db_query("SELECT field_product_product_id FROM field_data_field_product WHERE entity_id = '".$node_id."'")->fetchField();
 
       if (empty($product_id)) {
@@ -144,7 +144,7 @@ function _get_product_by_node_ref($node_id){
       }
       $products = commerce_product_load_multiple(array($product_id), array());
       return $products ? reset($products) : FALSE;
-}
+}*/
 
 
 ?>

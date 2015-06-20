@@ -405,43 +405,58 @@
                   if($nodeIds):
                     foreach($nodeIds as $id):
                       $nodeObj = node_load($id); 
-                      $product_data = _get_product_by_node_ref($nodeObj->nid);
-                      //echo '<pre>';
-                      //print_r($product_data);
+                      $nodeObj = node_view($nodeObj);
+                                        
               ?>
 
                 <div class="item">
                   <div class="smal-slider-pro-box">
-                    <a class="addto-whlst" title="" data-placement="left" data-toggle="tooltip" href="#" data-original-title="add to mylist">
+                    <a class="addto-whlst add_wishlist_btn" title="" data-placement="left" data-toggle="tooltip" href="javascript:void(0);" data-original-title="add to mylist">
                 <i class="fa fa-list-alt"></i>
               </a>
                     <figure>
-                      <img src="<?php print file_create_url($product_data->field_product_image['und'][0]['uri']); ?>" alt="" />
+                      <img src="<?php print file_create_url($nodeObj['product:field_product_image']['#object']->field_product_image['und'][0]['uri']); ?>" alt="" width="160" height="160"/>
                     </figure>
                     <div class="slider-sml-product-details">
-                      <h4><a href="#"><?php print $product_data->title; ?></a></h4>
-                        <div class="ad-cartt-weight">
-                  <dt class="waight-pro">250g</dt>
-                  <dt><a class="add-cart-to" href="#"><i class="fa fa-shopping-cart"></i> add</a></dt>
-                  <div class="rate-val">
-                    <?php print $product_data->commerce_price['und'][0]['amount']; ?>
-                  </div>
-                </div>
+                      <h4><a href="#"><?php print $nodeObj['product:title']; ?></a></h4>
+                      <div class="ad-cartt-weight">
+                        <dt class="waight-pro"><?php print render($nodeObj['product:commerce_price']); ?></dt>
+                        <dt><a class="add-cart-to add_cart_btn" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> add</a></dt>
+                        <div class="rate-val">
+                          <?php print render($nodeObj['product:field_weight']); ?>
+                        </div>
+                      </div>
                     </div>
                   </div>                     
                 </div>
                 
+                <div style="display:none;"><?php print render($nodeObj['field_product'][0]); ?></div>
+
                 <?php endforeach; ?>
                 <?php endif; ?>
 
 
 
                 </div>
-                    </div>
-                  </div>                     
-                </div> 
-              </div> 
+              </div>
+            </div>                     
+          </div> 
+        </div> 
       </div>
     </div>
   </div>
 </section>
+
+
+
+<script>
+$(document).ready(function() {
+  $('.add_cart_btn').click(function(){
+        $('#edit-submit').trigger('click');
+    });  
+
+    $('.add_wishlist_btn').click(function(){
+        $('#edit-add-to-wishlist').trigger('click');
+    });
+}); 
+</script>
