@@ -71,13 +71,13 @@
 			 		<div class="repeat-list-prodct">
 			 			<div class="inner-product-box">
 			 				<div class="listing-product-box">
-			 					<figure><img src="<?php print file_create_url($view->result[$id]->field_field_product[0]['raw']['entity']->field_product_image['und'][0]['uri']); ?>" alt="" /></figure>
+			 					<figure><img src="<?php print file_create_url(@$view->result[$id]->field_field_product[0]['raw']['entity']->field_product_image['und'][0]['uri']); ?>" alt="" /></figure>
 			 					
-			 					<h4><?php print  $view->result[$id]->field_field_product[0]['raw']['entity']->title; ?></h4>
+			 					<h4><?php print  @$view->result[$id]->field_field_product[0]['raw']['entity']->title; ?></h4>
 			 					<h6><?php print render($view->result[$id]->field_field_product[0]['rendered']['commerce_product'][$pid]['commerce_price']); ?></h6>
 			 				</div>
 			 				<div class="hover-product-box">			 					
-			 					<h3><a href="<?php print $nid; ?>"><?php print $view->result[$id]->field_field_product[0]['raw']['entity']->title; ?></a></h3>
+			 					<h3><a href="<?php print $nid; ?>"><?php print @$view->result[$id]->field_field_product[0]['raw']['entity']->title; ?></a></h3>
 			 					<div style="display:none;">
 			 					<?php print render($view->result[$id]->field_field_product_1); ?>
 			 					</div>
@@ -87,7 +87,7 @@
 			 					
 			 					<div class="hrsdelivery">Limited Availability</div>
 			 					<div class="wait-available">
-			 						<a href="<?php print $nid; ?>"><?php print $view->result[$id]->field_field_product[0]['raw']['entity']->field_weight['und'][0]['safe_value']; ?></a>
+			 						<a href="<?php print $nid; ?>"><?php @print $view->result[$id]->field_field_product[0]['raw']['entity']->field_weight['und'][0]['safe_value']; ?></a>
 			 					</div>
 			 					<div class="addto-crt">
 			 						

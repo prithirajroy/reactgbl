@@ -287,7 +287,7 @@ function reactgbl_menu_link__menu_product_category_menu(array $variables) {
 	  $output = '';
 	  if(count(taxonomy_get_parents($term_id[1])) == 0){
 	  $output .= '<li ' . $attr . '">';
-	  $output .= '<a href="'.$href.'">'.$title.'</a>';
+	  $output .= '<a href="'.$base_url.'/'.$href.'">'.$title.'</a>';
 	  if(count(taxonomy_get_children($term_id[1])) != 0){
 	  		$output .= '<ul class="mega-drop-down">';
 	  		$output .= '<h2><a href="'.$base_url.'/taxonomy/term/'.$term_id[1].'">'.$title.'</a></h2>';	

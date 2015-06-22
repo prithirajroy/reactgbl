@@ -18,12 +18,15 @@
   			<div class="col-md-3 col-sm-6 col-xs-6">
 				<div class="product-box">
 					<a href="<?php print $nid; ?>">
-						<figure class="product-pic"><img width="230" height="230" src="<?php print file_create_url($view->result[$id]->field_field_product[0]['raw']['entity']->field_product_image['und'][0]['uri']); ?>" alt="" /></figure>
+						<figure class="product-pic"><img width="230" height="230" src="<?php print file_create_url(@$view->result[$id]->field_field_product[0]['raw']['entity']->field_product_image['und'][0]['uri']); ?>" alt="" /></figure>
 						<div class="product-details">
-								<h4><?php print  $view->result[$id]->field_field_product[0]['raw']['entity']->title;?></h4>
-								<?php $str = $view->result[$id]->field_field_product[0]['raw']['entity']->field_product_description['und'][0]['safe_value']; 
-								$pos = strpos($str, ' ', 100);
-								print '<p>'.substr($str, 0, $pos).'...</p>'; 
+								<h4><?php print  @$view->result[$id]->field_field_product[0]['raw']['entity']->title;?></h4>
+								<?php 
+								$str = @$view->result[$id]->field_field_product[0]['raw']['entity']->field_product_description['und'][0]['safe_value']; 
+								if(isset($str) && !empty($str)){	
+									$pos = strpos($str, ' ', 100);
+									print '<p>'.substr($str, 0, $pos).'...</p>'; 
+								}
 								?>
 								<div class="rate-product">
 									<span><?php print render($view->result[$id]->field_field_product[0]['rendered']['commerce_product'][$pid]['commerce_price']); ?></span>

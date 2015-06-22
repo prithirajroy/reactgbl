@@ -45,7 +45,10 @@
 			</div>
 		</div>
 		
-		<?php print render(module_invoke('views', 'block_view', 'home_page_featured_block-block'));  ?>
+		<?php 
+            $feature_block = module_invoke('views', 'block_view', 'home_page_featured_block-block');
+            print render($feature_block);  
+        ?>
 
 	</div>
 </section>
